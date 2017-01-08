@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../actions/index';
 
-export default class App extends Component {
+class App extends Component {
   componentWillMount() {
+    this.props.fetchUsers();
   }
 
   renderUser({id, name, email}) {
@@ -20,9 +23,15 @@ export default class App extends Component {
       <div>
         <h4>Email directory</h4>
         <ul clasName="list-group">
-        debiasej@gmail.com Mario de Biase
+          {this.props.users.map(this.renderUser)}
         </ul>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { users: state.users.all };
+}
+
+export default connect(mapStateToProps, { fetchUsers })(App);
