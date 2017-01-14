@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/index';
+//import { fetchUsers } from '../actions/index';
 
 class App extends Component {
-  componentWillMount() {
-    this.props.fetchUsers();
-  }
+  // componentWillMount() {
+  //   this.props.fetchUsers();
+  // }
 
   renderUser({id, name, email}) {
     return (
@@ -34,4 +34,5 @@ function mapStateToProps(state) {
   return { users: state.users.all };
 }
 
-export default connect(mapStateToProps, { fetchUsers })(App);
+//export default connect(mapStateToProps, { fetchUsers })(App);
+export default connect(mapStateToProps)(App);
